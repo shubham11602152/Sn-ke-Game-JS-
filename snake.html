@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Snake Game</title>
+  <link rel="stylesheet" href="snake.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <p><button onclick="myMove(0,0)">Click Me</button></p>
+  <div id="container">
+    <div id="animate"></div>
+  </div>
+</body>
+<script type="text/javascript">
+
+  var x = 0;
+  var y = 0;
+
+ var prev_d = "ArrowUp";
+var prev_key = 39;
+  function start() {
+
+    var snake = {
+      px: x,
+      py: y,
+      dir: 38
+    };
+
+
+    let direction = 0;
+
+
+    $(document).keydown(function(event) {
+      //   Preventing default behaviour
+      console.log('started');
+      event.preventDefault();
+      //   checking direction
+      console.log(prev_d,event.key);
+      if(prev_d !== event.key)
+      {
+        switch (event.key) {
+          case "ArrowDown":
+            direction = 40;
+            break;
+          case "ArrowUp":
+            direction = 38;
+            break;
+          case "ArrowLeft":
+            direction = 37;
+            break;
+          case "ArrowRight":
+            direction = 39;
+            break;
+        }
+        prev_d = event.key;
+        setInterval(moveSnake,1000);
+        if(this.keyCode == direction){
+        // clearInterval(moveSnake);
+        }
+      }
+
+    });
+    // console.log(snake.px);
+
+
+    function moveSnake() {
+      snake.dir = direction;
+      console.log(direction);
+      // console.log(this.keyCode);
+      // Snake Direction
+      switch (direction) {
+        //DOWN - Move 1 box down
+        case 40:
+          snake.px = snake.px + 0;
+          snake.py =  snake.py + 10;
+          break;
+          //UP - Move 1 box up
+        case 38:
+          snake.px = snake.px + 0;
+          snake.py = snake.py - 10;
+          break;
+          //LEFT - Move 1 box left
+        case 37:
+          snake.px = snake.px - 10;
+          snake.py = snake.py + 0;
+          break;
+          //RIGHT - Move 1 box right
+        case 39:
+          snake.px = snake.px + 10;
+          snake.py = snake.py + 0;
+          break;
+      }
+      var ele = document.getElementById('animate');
+      if(snake.px !==390 && snake.py!=390)
+      {
+        ele.style.left = snake.px + 'px';
+        ele.style.top = snake.py + 'px';
+      }
+
+    }
+
+
+  }
+
+  start();
+  // setInterval(start,1000);
+</script>
+
+</html>
+
+<!-- if((window.jQuery))
+{
+    console.log("jQuery Found");
+}
+else
+{
+    console.log("jQuery Not Found");
+    var script = document.createElement('script');
+    script.src = 'https://code.jquery.com/jquery-3.3.1.min.js';
+    document.body.appendChild(script);
+} -->

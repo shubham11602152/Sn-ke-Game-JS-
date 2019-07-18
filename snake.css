@@ -1,0 +1,28 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background: black;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+p{
+  position: absolute;
+  top: 50px;
+}
+#container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: #baaac2;
+}
+#animate {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  background-color: #d82435;
+}
